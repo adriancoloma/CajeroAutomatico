@@ -1,5 +1,5 @@
 public class BaseDeDatos {
-    private static BaseDeDatos instance = new BaseDeDatos();
+    private static final BaseDeDatos instance = new BaseDeDatos();
 
     public static BaseDeDatos getInstance() {
         return instance;
@@ -27,14 +27,31 @@ public class BaseDeDatos {
     }
 
     public double getDineroDisponible(int numeroCuenta){
+        if (buscarCuenta(numeroCuenta) != null) {
+            return buscarCuenta(numeroCuenta).getSaldoTotal();
+        }
         return -1;
     }
 
     public double getSaldoTotal(int numeroCuenta){
+        if (buscarCuenta(numeroCuenta) != null) {
+            return buscarCuenta(numeroCuenta).getSaldoTotal();
+        }
         return -1;
     }
 
     public void retirarDinero(int numeroCuenta, double cantidad){
 
+    }
+    private Cuenta buscarCuenta(int numeroCuenta){
+        Cuenta cuenta;
+        for(Cuenta miCuenta: cuentas) {
+            if (miCuenta.getNumCuenta() == numeroCuenta) {
+                cuenta = miCuenta;
+                return cuenta;
+            }
+        }
+        cuenta = null;
+        return cuenta;
     }
 }
