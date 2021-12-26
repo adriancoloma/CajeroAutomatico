@@ -1,7 +1,4 @@
-package com.jda;
-
 public class Retiro extends Transaccion{
-
     private final DispensadorDinero dispensador;
     private final Teclado teclado;
     private final Pantalla pantalla;
